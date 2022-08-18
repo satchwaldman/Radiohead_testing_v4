@@ -14,3 +14,12 @@ INTERFACING INSTRUCTIONS:
 9. Either through the terminal or by dragging the file from your folder, insert the Radiohead library into the build>libdeps>sparkfun_samd21_proRF folder.
 10. That's it! Any files in src that had undefined called to header files should now be resolved.
 
+FLASHING FIRMWARE INSTRUCTIONS:
+1. The firmware for both the client and server boards can be found at the bottom of the main.cpp file.
+2. The client firmware is found in the section second from the bottom, on lines 522-663; uncomment this section to flash the client firmware.
+3. Likewise, the server firmware is found in the section at the very bottom, on lines 664-726; uncomment this section to flash the server firmware.
+4. The server firmware must be changed for each server so that each server board can be distinguished from the others. Lines 694 and 705 should be updated accordingly so that the number associated with each server is correct. For instance, if server board 2 was being flashed, SERVER1_ADDRESS in line 694 should be changed to SERVER2_ADDRESS and “server1” in line 705 should be changed to “server2.”
+
+EMULATING MESH TOPOLOGIES:
+1. In order to do mesh testing without actually creating a physical mesh network (i.e., one in which nodes are placed far enough apart that some cannot physically communicate with one another) we will use a test network.
+2. This test network can be found in RHRouter.h and RHRouter.cpp. By uncommenting one of the #define RH_TEST_NETWORK definitions on lines 33-36 of RHRouter.h, the corresponding mesh topology will become active in RHRouter.cpp. Alternatively, the desired #define can be inserted just above the #ifdef RH_TEST_NETWORK block on line 224 of RHRouter.cpp.
